@@ -53,7 +53,7 @@ int main(void)
 	  int k = 0;
 	  int l = 0;
 	  int x =0;
-/*
+
 	    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
 
 	    GPIOA->MODER |=0b01<<5*2;
@@ -64,7 +64,7 @@ int main(void)
 
 	    GPIOA->OSPEEDR &=~(0b11<<5*2);
 
-
+/*
 	    GPIOA->ODR |=0b1<<5;
 
 	    GPIOA->ODR &=~(0b1<<5);
@@ -126,6 +126,13 @@ int main(void)
 	  	       */
 
 	  x = ((GPIOC -> IDR) & 0b1<<13 ) >> 13;
+	  if (x == 1){
+	  		GPIOA->BSRRH |=0b01<<5;
+	  	}
+	  	else if (x == 0){
+	  		GPIOA->BSRRL |=0b01<<5;
+	  	}
+
 
 	i++;
   }
