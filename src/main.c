@@ -52,7 +52,8 @@ int main(void)
 	  int j = 0;
 	  int k = 0;
 	  int l = 0;
-	  int x =0;
+	  int novy =0;
+	  int stary=0;
 
 	    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
 
@@ -75,7 +76,7 @@ int main(void)
 	    GPIOA->BSRRL |=0b1<<5;
 	    GPIOA->BSRRH |=0b1<<5;
 */
-	/*     RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
+	     RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
 
 	          GPIOC->MODER &=~(0b11<<13*2);
 
@@ -84,7 +85,7 @@ int main(void)
 	          GPIOC->PUPDR  &=~(0b11<<13*2);
 
 
-*/
+
 
 
   /**
@@ -110,7 +111,7 @@ int main(void)
   /* Infinite loop */
   while (1)
   {
-
+/*
 	  	 	  for(j=0;j<15;j++)
 	  	 	  {
 	  	 		  for (l=0;l<50000;l++)
@@ -124,9 +125,22 @@ int main(void)
 
 	  	 	  }
 
+*/
+
+	stary=novy;
+    novy = ((GPIOC -> IDR) & 0b1<<13 ) >> 13;
+
+
+    	if ((stary == 1)&&(novy == 0))
+    	{
+
+    		GPIOA->ODR ^=0b1<<5;
+    	}
+
+
+
 /*
-	  x = ((GPIOC -> IDR) & 0b1<<13 ) >> 13;
-	  if (x == 1){
+if (x == 1){
 	  		GPIOA->BSRRH |=0b01<<5;
 	  	}
 	  	else if (x == 0){
