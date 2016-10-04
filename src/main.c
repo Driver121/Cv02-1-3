@@ -48,14 +48,12 @@ SOFTWARE.
 */
 int main(void)
 {
-	int i = 0;
-	int j = 0;
+	  int i = 0;
+	  int j = 0;
 	  int k = 0;
 	  int l = 0;
-
-	  // uint16_t x=0;
 	  int x =0;
-
+/*
 	    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
 
 	    GPIOA->MODER |=0b01<<5*2;
@@ -76,15 +74,15 @@ int main(void)
 
 	    GPIOA->BSRRL |=0b1<<5;
 	    GPIOA->BSRRH |=0b1<<5;
+*/
+	     RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
 
-	    /* RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
-
-	        	GPIOC->MODER &=~(0b11<<13*2);
+	          GPIOC->MODER &=~(0b11<<13*2);
 
 	          GPIOC->OTYPER &=~(0b1<<13);
 
 	          GPIOC->PUPDR  &=~(0b11<<13*2);
-	    */
+
 
 
 
@@ -127,7 +125,7 @@ int main(void)
 	  	 	  }
 	  	       */
 
-	  	 //  x=GPIOC->IDR |=0b1<<13;
+	  x = ((GPIOC -> IDR) & 0b1<<13 ) >> 13;
 
 	i++;
   }
